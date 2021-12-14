@@ -5,12 +5,14 @@
 #include <string>
 #include<math.h>
 
+
 void init() {
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 }
 
 Trashcan green("Organic", "green");
 Trashcan blue("Plastic", "blue");
+Trashcan red("Hazardous", "red");
 
 
 void display() {
@@ -18,6 +20,7 @@ void display() {
 
 	green.displayTrashcan();
 	blue.displayTrashcan();
+    red.displayTrashcan();
 
 	glFlush();
 }
