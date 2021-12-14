@@ -10,11 +10,14 @@ void init() {
 }
 
 Trashcan green("Organic", "green");
+Trashcan blue("Plastic", "blue");
+
 
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	green.displayTrashcan();
+	blue.displayTrashcan();
 
 	glFlush();
 }
