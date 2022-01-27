@@ -148,3 +148,42 @@ int main()
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
     glDeleteShader(fragmentShaderCan);
+
+    // set up vertex data (and buffer(s)) and configure vertex attributes
+    // ------------------------------------------------------------------
+    float vertices[] = {
+        // Positions        // Colors         // Texture
+        -0.25f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+         0.25f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+         0.25f,  1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+        -0.25f,  1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f
+
+    };  
+
+    float can_vertices[] = {
+        -0.9f, -0.9f, 0.0f, 1.0f, 0.0f, 0.0f,
+        -0.6f, -0.9f, 0.0f, 1.0f, 0.0f, 0.0f,
+        -0.5f, -0.3f, 0.0f, 1.0f, 0.0f, 0.0f,
+        -1.0f, -0.3f, 0.0f, 1.0f, 0.0f, 0.0f
+    }; 
+
+    float blue_can_vertices[] = {
+        -0.4f, -0.9f, 0.0f, 0.0f, 0.0f, 1.0f,
+        -0.1f, -0.9f, 0.0f, 0.0f, 0.0f, 1.0f,
+         0.0f, -0.3f, 0.0f, 0.0f, 0.0f, 1.0f,
+        -0.5f, -0.3f, 0.0f, 0.0f, 0.0f, 1.0f
+    };
+
+    float green_can_vertices[] = {
+         0.1f, -0.9f, 0.0f, 0.0f, 1.0f, 0.0f,
+         0.4f, -0.9f, 0.0f, 0.0f, 1.0f, 0.0f,
+         0.5f, -0.3f, 0.0f, 0.0f, 1.0f, 0.0f,
+         0.0f, -0.3f, 0.0f, 0.0f, 1.0f, 0.0f
+    };
+
+    float yellow_can_vertices[] = {
+         0.6f, -0.9f, 0.0f, 1.0f, 1.0f, 0.0f,
+         0.9f, -0.9f, 0.0f, 1.0f, 1.0f, 0.0f,
+         1.0f, -0.3f, 0.0f, 1.0f, 1.0f, 0.0f,
+         0.5f, -0.3f, 0.0f, 1.0f, 1.0f, 0.0f
+    };
