@@ -5,7 +5,6 @@
 #include <string>
 #include<math.h>
 
-
 void init() {
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 }
@@ -22,6 +21,7 @@ void display() {
 	green.displayTrashcan();
 	blue.displayTrashcan();
     red.displayTrashcan();
+	yellow.displayTrashcan();
 
 	glFlush();
 }
