@@ -13,6 +13,7 @@ void init() {
 Trashcan green("Organic", "green");
 Trashcan blue("Plastic", "blue");
 Trashcan red("Hazardous", "red");
+Trashcan yellow("Recyclable", "yellow");
 
 
 void display() {
