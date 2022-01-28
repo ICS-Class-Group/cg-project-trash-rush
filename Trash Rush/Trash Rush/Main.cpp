@@ -4,6 +4,7 @@
 #include <cstdlib>
 
 #include "Trashcan.h"
+#include "Trash.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -14,6 +15,14 @@ void processInput(GLFWwindow* window);
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+
+int width, height, nrChannels;
+unsigned char* imgdata;
+unsigned int texture;
+Trash trash;
+
+unsigned int score = 0;
+unsigned int playcount = 0;
 
 const char* vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
@@ -134,7 +143,6 @@ int main()
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
     }
 
-
     glAttachShader(shaderProgramTrashcan, vertexShader);
     glAttachShader(shaderProgramTrashcan, fragmentShaderCan);
     glLinkProgram(shaderProgramTrashcan);
@@ -148,9 +156,8 @@ int main()
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
     glDeleteShader(fragmentShaderCan);
-
     // set up vertex data (and buffer(s)) and configure vertex attributes
-    // ------------------------------------------------------------------
+// ------------------------------------------------------------------
     float vertices[] = {
         // Positions        // Colors         // Texture
         -0.25f, 0.5f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
@@ -158,14 +165,14 @@ int main()
          0.25f,  1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
         -0.25f,  1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f
 
-    };  
+    };
 
     float can_vertices[] = {
         -0.9f, -0.9f, 0.0f, 1.0f, 0.0f, 0.0f,
         -0.6f, -0.9f, 0.0f, 1.0f, 0.0f, 0.0f,
         -0.5f, -0.3f, 0.0f, 1.0f, 0.0f, 0.0f,
         -1.0f, -0.3f, 0.0f, 1.0f, 0.0f, 0.0f
-    }; 
+    };
 
     float blue_can_vertices[] = {
         -0.4f, -0.9f, 0.0f, 0.0f, 0.0f, 1.0f,
@@ -190,11 +197,11 @@ int main()
 
     unsigned int VBOs[5], VAOs[5];
     glGenVertexArrays(5, VAOs);
-    glGenBuffers(5, VBOs);    
-    
+    glGenBuffers(5, VBOs);
+
     glBindVertexArray(VAOs[0]);
     glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);   
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
