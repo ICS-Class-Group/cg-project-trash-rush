@@ -1,6 +1,6 @@
 #pragma once
 
-#include <GL/glut.h>
+#include <glad/glad.h>
 #include <iostream>
 #include <string>
 #include <math.h>
@@ -10,11 +10,16 @@ using namespace std;
 
 class Trashcan {
 	string label;
-	string color;
 	int waste_count;
+	float width;
+	float can_vertices[24] = {
+	-0.9f, -0.9f, 0.0f, 1.0f, 0.0f, 0.0f,
+	-0.6f, -0.9f, 0.0f, 1.0f, 0.0f, 0.0f,
+	-0.5f, -0.3f, 0.0f, 1.0f, 0.0f, 0.0f,
+	-1.0f, -0.3f, 0.0f, 1.0f, 0.0f, 0.0f
+	};
 public:
-	Trashcan(string, string);
-	void displayTrashcan() const;
+	Trashcan(string, float);
 	int getWasteCount() const;
 };
 
